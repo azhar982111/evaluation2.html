@@ -1,0 +1,111 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    table {
+        width: 50%;
+
+        color: rgb(0, 0, 0);
+        height: 60px;
+        margin-top: 80px;
+        margin-left: 340px;
+    }
+
+    table>:nth-child(1) {
+        background-color: rgb(12, 138, 127);
+        color: white;
+    }
+
+    #container {
+
+        width: 100%;
+        height: 80px;
+        background-color: rgb(255, 255, 255);
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    }
+
+
+    #container div {
+        color: rgb(6, 105, 11);
+        margin: auto;
+        font-size: 30px;
+    }
+
+    #container a {
+        text-decoration: none;
+    }
+</style>
+
+<body>
+
+
+    <div id="container">
+
+        <div>
+            <a href="http://127.0.0.1:5501/index.html">HOME</a>
+        </div>
+        <div>
+            <a href="http://127.0.0.1:5501/contactList.html">Contact List</a>
+        </div>
+        <div>
+            <a href="http://127.0.0.1:5501/favourites.html">Favourites</a>
+        </div>
+
+    </div>
+
+
+
+
+
+
+    <table>
+
+        <tr>
+
+            <th>Contact name</th>
+            <th>Mobile Number</th>
+            <th>Type</th>
+            <th>Favourite</th>
+        </tr>
+
+    </table>
+
+</body>
+
+
+<script>
+    var table = document.querySelector('table')
+    var contactList = JSON.parse(localStorage.getItem("contactList"))
+    console.log(contactList)
+    contactList.forEach(element => {
+        var row = document.createElement('tr')
+        var name = document.createElement('th')
+        var number = document.createElement('th')
+        var type = document.createElement('th')
+        var favourite = document.createElement('th')
+
+        name.textContent = element.Name
+        number.textContent = element.Number
+        type.textContent = element.Type
+        favourite.innerHTML = "<a href=''>add to favourite</a>"
+
+        console.log(element.Name, element.Number, element.Type)
+
+        row.append(name, number, type, favourite)
+        table.append(row)
+
+    });
+</script>
+
+
+</html>
