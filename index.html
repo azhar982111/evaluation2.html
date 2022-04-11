@@ -1,0 +1,161 @@
+<!DOCTYPE html>
+<html lang="en">
+
+<head>
+    <meta charset="UTF-8">
+    <meta http-equiv="X-UA-Compatible" content="IE=edge">
+    <meta name="viewport" content="width=device-width, initial-scale=1.0">
+    <title>Document</title>
+</head>
+
+<style>
+    #container {
+
+        width: 100%;
+        height: 80px;
+        background-color: rgb(255, 255, 255);
+        display: flex;
+        flex-direction: row;
+        justify-content: center;
+        box-shadow: rgba(100, 100, 111, 0.2) 0px 7px 29px 0px;
+    }
+
+
+    #container div {
+        color: rgb(6, 105, 11);
+        margin: auto;
+        font-size: 30px;
+    }
+
+    #container a {
+        text-decoration: none;
+    }
+
+    #bottom {
+        box-shadow: rgba(50, 50, 93, 0.25) 0px 50px 100px -20px, rgba(0, 0, 0, 0.3) 0px 30px 60px -30px;
+        height: 300px;
+        width: 350px;
+        margin: auto;
+        margin-top: 50px;
+        justify-content: center;
+        display: flex;
+        flex-direction: column;
+
+    }
+
+    #bottom input {
+        width: 200px;
+        height: 30px;
+        margin: 7px;
+        margin-left: 66px;
+    }
+
+    #bottom select {
+        height: 30px;
+        width: 120px;
+        margin: 7px;
+        margin-left: 66px;
+    }
+
+    #bottom h2 {
+        margin-left: 60px;
+
+    }
+
+    #bottom button {
+        width: 180px;
+        height: 40px;
+        background-color: black;
+        color: white;
+        border-radius: 15px;
+        margin-left: 83px;
+    }
+</style>
+
+<body>
+
+
+
+
+
+    <div id="container">
+
+        <div>
+            <a href="http://127.0.0.1:5501/index.html">HOME</a>
+        </div>
+        <div>
+            <a href="http://127.0.0.1:5501/contactList.html">Contact List</a>
+        </div>
+        <div>
+            <a href="http://127.0.0.1:5501/favourites.html">Favourites</a>
+        </div>
+
+    </div>
+
+
+    <div id="bottom">
+
+        <h2>Enter your contact details</h2>
+
+        <form>
+
+            <input placeholder="Enter Contact Name" id="name" type="text">
+            <input placeholder="Enter Mobile Number" id="mobile" type="number">
+            <select id="type">
+                <option>Select a type</option>
+                <option>Family</option>
+                <option>Friends</option>
+                <option>Others</option>
+            </select>
+
+            <button type="submit">Submit</button>
+
+        </form>
+    </div>
+
+
+
+</body>
+
+
+
+
+
+<script>
+        var arr = []
+        var obj = {}
+        const form = document.querySelector('form');
+        form.addEventListener('submit', Submit);
+
+        function Submit(event) {
+            event.preventDefault();
+            var name = document.getElementById("name").value
+            var number = document.getElementById("mobile").value
+            var type = document.getElementById("type").value
+            
+            obj["Name"] = name
+            obj["Number"] = number
+            obj["Type"] = type
+            arr.push(obj)
+            localStorage.setItem("contactList",JSON.stringify(arr))
+            alert('Contact added successful')
+        }
+    </script>
+
+
+
+
+
+
+
+
+
+
+
+
+
+</script>
+
+
+
+</html>
